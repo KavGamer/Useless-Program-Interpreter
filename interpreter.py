@@ -1,5 +1,5 @@
 F=["f"]
-Fd=[lambda x,y: x+y,lambda x,y: x-y]
+Fd=[lambda x,y: x+y,lambda x,y: x-y,lambda x,y: x*y,lambda x,y: x/y, lambda x,y: x**y,lambda x,y: x**(1/y)]
 class Token:
     def __init__(self,v,n,t):
         self.Value=v
@@ -43,7 +43,7 @@ def Calc(tok):
         i+=1
     return tok
 
-c="a2f0b7f1c2"
+c="a2f0b7f1c2f2d2f2e2f4e2f4e2"
 result=Analyser(c)
 result=Calc(result)
 
@@ -67,7 +67,6 @@ and f2 is to minus the token before and after
 
 Class Token -> A token contains the value and the type for each caracters
 Analyser Func -> analyse the func (i don't want to explain)
-Line 32-35 -> compile the different part of the source
 
 that's all for me, have a good day
 
