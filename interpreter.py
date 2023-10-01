@@ -6,6 +6,13 @@ class Token:
         self.Name=n
         self.Type=t
 
+
+def debug(r):
+    print(r)
+    for i in r:
+        print(i.Value,i.Name,i.Type)
+
+
 def Analyser(source):  
     p=0
     tokens=[]
@@ -20,20 +27,34 @@ def Analyser(source):
     return tokens
 
 
-c="a2f0b7"
+def Calc(tok):
+    i=0
+    while i < len(tok):
+        if tok[i].Type=="Assignation":
+            if i+1<len(tok):
+                if tok[i+1].Type=="Operator":
+                    ff=int(tok[i+1].Value)
+                    tok.insert(i+1,Token(Fd[ff](int(tok[i].Value),int(tok[i+2].Value)),tok[i].Name,"Assignation"))
+                    tok.remove(tok[i])
+                    tok.remove(tok[i+1])
+                    tok.remove(tok[i+1])
+                    i-=1
+                    pass
+        i+=1
+    return tok
+
+c="a2f0b7f1c2"
 result=Analyser(c)
+result=Calc(result)
 
 
-"""print(result)
-for i in result:
-    print(i.Value,i.Name,i.Type)"""
-
-
-for i in range(len(result)):
+"""for i in range(len(result)):
     if result[i].Type=="Operator":
         ff=int(result[i].Value)
-        print(Fd[ff](int(result[i-1].Value),int(result[i+1].Value)))
+        print(Fd[ff](int(result[i-1].Value),int(result[i+1].Value)))"""
 
+#debug(result)
+print(result[0].Value)
 
 """
 
